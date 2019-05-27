@@ -127,6 +127,7 @@
     "invariant": "^2.2.4",
     "lodash": "^4.17.11",
     "memoize-one": "^4.0.3",
+    "moment-jalali": "^0.3.9",
     "prop-types": "^15.6.2",
     "prop-types-extra": "^1.1.0",
     "react-overlays": "^1.2.0",

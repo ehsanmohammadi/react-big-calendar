@@ -143,6 +143,7 @@ class DateContentRow extends React.Component {
           date={date}
           getNow={getNow}
           rtl={rtl}
+          localizer={localizer}
           range={range}
           selectable={selectable}
           container={this.getContainer}

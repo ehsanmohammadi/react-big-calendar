@@ -31,6 +31,7 @@ export class DateLocalizer {
     this.propType = spec.propType || localePropType
 
     this.startOfWeek = spec.firstOfWeek
+    this.dates = spec.dates || {}
     this.formats = spec.formats
     this.format = (...args) => _format(this, spec.format, ...args)
   }

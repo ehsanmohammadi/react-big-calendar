@@ -37,6 +37,7 @@ class BackgroundCells extends React.Component {
       range,
       getNow,
       getters,
+      localizer,
       date: currentDate,
       components: { dateCellWrapper: Wrapper },
     } = this.props
@@ -59,7 +60,8 @@ class BackgroundCells extends React.Component {
                   selected && 'rbc-selected-cell',
                   dates.eq(date, current, 'day') && 'rbc-today',
                   currentDate &&
-                    dates.month(currentDate) !== dates.month(date) &&
+                    dates.month(currentDate, undefined, localizer) !==
+                      dates.month(date, undefined, localizer) &&
                     'rbc-off-range-bg'
                 )}
               />
@@ -179,6 +181,8 @@ BackgroundCells.propTypes = {
   onSelectSlot: PropTypes.func.isRequired,
   onSelectEnd: PropTypes.func,
   onSelectStart: PropTypes.func,
+
+  localizer: PropTypes.object.isRequired,
 
   range: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
   rtl: PropTypes.bool,

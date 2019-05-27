@@ -2,10 +2,12 @@ import { addDecorator } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import moment from 'moment'
+import jMoment from 'moment-jalali'
 import React from 'react'
 
 import BaseCalendar from '../../src'
 import momentLocalizer from '../../src/localizers/moment.js'
+import jMomentLocalizer from '../../src/localizers/moment-jalali.js'
 
 // For Testing SASS styling
 import '../../src/sass/styles.scss'
@@ -25,6 +27,17 @@ export const date = (...args) => moment(...args).toDate()
 
 export const Calendar = props => (
   <BaseCalendar localizer={localizer} {...props} />
+)
+
+jMoment.locale('fa')
+const jlocalizer = jMomentLocalizer(jMoment)
+export const JalaliCalendar = props => (
+  <BaseCalendar
+    localizer={jlocalizer}
+    culture={'fa-IR'}
+    rtl={true}
+    {...props}
+  />
 )
 
 Object.assign(Calendar, BaseCalendar)

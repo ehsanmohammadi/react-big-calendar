@@ -19,15 +19,29 @@ let dates = {
     return MONTHS.map(i => dates.month(date, i))
   },
 
-  firstVisibleDay(date, localizer) {
-    let firstOfMonth = dates.startOf(date, 'month')
+  month(date, val, localizer) {
+    if (typeof localizer.dates.month === 'function') {
+      return localizer.dates.month(date)
+    }
 
+    return dateMath.month(date, val)
+  },
+
+  firstVisibleDay(date, localizer) {
+    if (typeof localizer.dates.firstVisibleDay === 'function') {
+      return localizer.dates.firstVisibleDay(date)
+    }
+
+    let firstOfMonth = dates.startOf(date, 'month')
     return dates.startOf(firstOfMonth, 'week', localizer.startOfWeek())
   },
 
   lastVisibleDay(date, localizer) {
-    let endOfMonth = dates.endOf(date, 'month')
+    if (typeof localizer.dates.lastVisibleDay === 'function') {
+      return localizer.dates.lastVisibleDay(date)
+    }
 
+    let endOfMonth = dates.endOf(date, 'month')
     return dates.endOf(endOfMonth, 'week', localizer.startOfWeek())
   },
 
